@@ -61,19 +61,40 @@ while True:
     total_bill += item_total
     order_summary.append((item,price,quantity, item_total))  # add to summary
 
-    another = input("Do you want to order another item? (yes/no):").lower()
+    another = input("\nDo you want to order another item? (yes/no):").lower()
     if another == "no":
         break
 
 
 # Step 4: Print order summary  
   
-print("ORDER SUMMARY:")
+print("\nORDER SUMMARY:")
 for item ,price, quantity, item_total in order_summary:
-    print(f"{item}:{price} x {quantity} = {item_total}")
+    print(f"{item}: ₹{price} x {quantity} =  ₹{item_total}")
 
-print(f" Your final bill is: ₹{total_bill}")
-print(f" Thank you for dining with Gani's Restaurent!")
+# Step 5: Show subtotal
+print(f"\nSubtotal: ₹{total_bill}")
+
+# Step 6: Apply discount if total is 500 or more
+if total_bill >= 500:
+    discount = total_bill * 10 / 100  # 10% discount
+    after_discount = total_bill - discount
+    print(f"\nAfter applied discount -(%10): ₹{total_bill} -₹{discount} = ₹{after_discount}")
+else:
+    discount = 0
+    print("No discount applied.")
+
+# Step 7: Calculate tax (5%) on amount after discount
+
+tax = after_discount * 5 / 100  # 5% GST
+final_amount = after_discount + tax
+print(f"After applied GST +(%5): ₹{after_discount} + ₹{tax} = ₹{final_amount}")
+
+# Step 8: Final bill
+
+print(f"\nFinal Bill Amount: ₹{final_amount}") 
+
+print(f"\nThank you for dining with Gani's Restaurent!")
 
     
 
